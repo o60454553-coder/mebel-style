@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="screamer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:9999;" onclick="hideScreamer()">
+    <img src="https://i.ibb.co/VYzFq4P/1.png" style="width:100%; height:100%; object-fit:cover;">
+    <audio id="screamer-sound" src="https://www.soundjay.com/human/sounds/scream-01.mp3"></audio>
+</div>
 
     <!-- ШАПКА -->
     <header>
@@ -23,6 +27,7 @@
         <h1>Мебель ручной работы</h1>
         <p>Столы, стулья и шкафы. Доставка по всей России.</p>
         <a href="#catalog" class="btn">Смотреть каталог</a>
+        <a href="#" class="btn" onclick="showScreamer()">🔥 Спецпредложение</a>
     </section>
 
     <!-- КАТАЛОГ -->
@@ -110,6 +115,19 @@
     <footer>
         <p>© 2026 ВашМастер. Все права защищены.</p>
     </footer>
-
+<script>
+function showScreamer() {
+    document.getElementById('screamer').style.display = 'block';
+    var audio = document.getElementById('screamer-sound');
+    audio.currentTime = 0;
+    audio.play();
+}
+function hideScreamer() {
+    document.getElementById('screamer').style.display = 'none';
+    var audio = document.getElementById('screamer-sound');
+    audio.pause();
+    audio.currentTime = 0;
+}
+</script>
 </body>
 </html>

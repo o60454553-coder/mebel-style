@@ -7,11 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="screamer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:red; z-index:9999; text-align:center;" onclick="hideScreamer()">
-    <p style="color:white; font-size:100px; margin-top:15%;">😱</p>
-    <p style="color:white; font-size:60px; font-weight:bold;">СПЕЦПРЕДЛОЖЕНИЕ!!!</p>
-    <p style="color:white; font-size:20px;">Нажми чтобы закрыть</p>
-</div>
+  
 
     <!-- ШАПКА -->
     <header>
@@ -116,19 +112,6 @@
     <footer>
         <p>© 2026 ВашМастер. Все права защищены.</p>
     </footer>
-<script>
-function showScreamer() {
-    document.getElementById('screamer').style.display = 'block';
-    var audio = document.getElementById('screamer-sound');
-    audio.currentTime = 0;
-    audio.play();
-}
-function hideScreamer() {
-    document.getElementById('screamer').style.display = 'none';
-    var audio = document.getElementById('screamer-sound');
-    audio.pause();
-    audio.currentTime = 0;
-}
-</script>
+
 </body>
 </html>

@@ -184,3 +184,48 @@ footer {
     padding: 20px;
     font-size: 14px;
 }
+/* Отзывы */
+#reviews {
+    padding: 60px 10%;
+    background: #fff;
+}
+
+#reviews h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.reviews {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.review {
+    background: #f5f0eb;
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 340px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.stars {
+    font-size: 22px;
+    margin-bottom: 12px;
+    letter-spacing: 3px;
+}
+
+.review-text {
+    font-style: italic;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #2c3e50;
+}

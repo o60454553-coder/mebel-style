@@ -3,110 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мебель на заказ — ВашМастер</title>
+    <title>Мебель на заказ — РябининМастер</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
 
-    <!-- ШАПКА -->
-    <header>
-        <div class="logo">🪑 РябининМастер</div>
-        <nav>
-            <a href="#">Главная</a>
-            <a href="#catalog">Каталог</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
-    </header>
+<!-- БОКОВАЯ ПАНЕЛЬ -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-logo">🪑 РябининМастер</span>
+        <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" onclick="filterCards('all'); closeSidebar(); return false;">🏠 Все товары</a>
+        <a href="#" class="sidebar-link" onclick="filterCards('new'); closeSidebar(); return false;">🆕 Новинки</a>
+        <a href="#" class="sidebar-link" onclick="filterCards('table'); closeSidebar(); return false;">🪵 Столы</a>
+        <a href="#" class="sidebar-link" onclick="filterCards('chair'); closeSidebar(); return false;">🪑 Стулья</a>
+        <a href="#" class="sidebar-link" onclick="filterCards('cabinet'); closeSidebar(); return false;">🗄️ Шкафы</a>
+        <a href="#" class="sidebar-link" onclick="filterCards('custom'); closeSidebar(); return false;">✨ Индивидуальный</a>
+    </nav>
+</div>
 
-    <!-- БАННЕР -->
-    
+<!-- ЗАТЕМНЕНИЕ -->
+<div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 
-    <!-- КАТАЛОГ -->
-    <section id="catalog">
-        <h2>Наши изделия</h2>
-        <div class="cards">
+<!-- КНОПКА ОТКРЫТИЯ ПАНЕЛИ -->
+<button id="menu-btn" class="menu-btn" onclick="openSidebar()">☰</button>
 
-            <!-- КАРТОЧКА 1: СТОЛ -->
-            <div class="card">
-                <div class="card-img">
-                    <img src="images/table.jpg" alt="Дубовый стол">
-                </div>
-                <div class="card-body">
-                    <h3>Стол «Дубовый массив»</h3>
-                    <p>Размер: 160×90×75 см. Материал: дуб. Покрытие: масло с воском.</p>
-                    <p class="price">35 000 ₽</p>
-                    <a href="#contacts" class="btn">Заказать</a>
-                </div>
-            </div>
-
-            <!-- КАРТОЧКА 2: СТУЛ -->
-            <div class="card">
-                <div class="card-img">
-                    <img src="images/chair.jpg" alt="Стул из бука">
-                </div>
-                <div class="card-body">
-                    <h3>Стул «Бук классик»</h3>
-                    <p>Высота: 85 см. Материал: бук. Обивка: рогожка (серый).</p>
-                    <p class="price">8 500 ₽</p>
-                    <a href="#contacts" class="btn">Заказать</a>
-                </div>
-            </div>
-
-            <!-- КАРТОЧКА 3: ШКАФ -->
-            <div class="card">
-                <div class="card-img">
-                    <img src="images/cabinet.jpg" alt="Шкаф-купе">
-                </div>
-                <div class="card-body">
-                    <h3>Шкаф «Рябинин»</h3>
-                    <p>Размер: 240×200×60 см. Материал: дуб.</p>
-                    <p class="price">Бесплатно </p>
-                    <a href="#contacts" class="btn">Заказать</a>
-                </div>
-            </div>
-
+<!-- МОДАЛЬНОЕ ОКНО ЗАКАЗА -->
+<div id="order-modal" class="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2>Оформление заказа</h2>
+        <p>Для заказа свяжитесь с нами удобным способом:</p>
+        <div class="modal-contacts">
+            <a href="tel:+79000000000" class="modal-contact-item">
+                <span class="modal-icon">📞</span>
+                <span>+7 (900) 000-00-00</span>
+            </a>
+            <a href="https://vk.me/79000000000" target="_blank" class="modal-contact-item">
+                <span class="modal-icon">💬</span>
+                <span>Написать в VK</span>
+            </a>
+            <a href="https://t.me/ваш_telegram" target="_blank" class="modal-contact-item">
+                <span class="modal-icon">✈️</span>
+                <span>Написать в Telegram</span>
+            </a>
+            <a href="mailto:info@vashmaster.ru" class="modal-contact-item">
+                <span class="modal-icon">📧</span>
+                <span>info@vashmaster.ru</span>
+            </a>
         </div>
-    </section>
-<!-- ОТЗЫВЫ -->
-<section id="reviews">
-    <h2>Что говорят наши клиенты</h2>
-    <div class="reviews">
+        <p class="modal-hint">Нажмите на способ связи или на крестик чтобы закрыть</p>
+    </div>
+</div>
 
-        <div class="review">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">«Заказал Шкаф "Рябинин — превзошёл ожидания. Дерево живое, сборка заняла 20 минут.»</p>
-            <p class="review-author">— Алёна, Москва</p>
+<!-- ХАРАКТЕРИСТИКИ: СТОЛ -->
+<div id="info-table" class="modal" onclick="if(event.target===this)closeInfo('info-table')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeInfo('info-table')">&times;</span>
+        <h2>Стол «Дубовый массив»</h2>
+        <table class="specs-table">
+            <tr><td>Материал</td><td>Дуб</td></tr>
+            <tr><td>Размер</td><td>160 × 90 × 75 см</td></tr>
+            <tr><td>Покрытие</td><td>Масло с воском</td></tr>
+            <tr><td>Вес</td><td>45 кг</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ХАРАКТЕРИСТИКИ: СТУЛ -->
+<div id="info-chair" class="modal" onclick="if(event.target===this)closeInfo('info-chair')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeInfo('info-chair')">&times;</span>
+        <h2>Стул «Бук классик»</h2>
+        <table class="specs-table">
+            <tr><td>Материал</td><td>Бук</td></tr>
+            <tr><td>Высота</td><td>85 см</td></tr>
+            <tr><td>Обивка</td><td>Рогожка (серая)</td></tr>
+            <tr><td>Вес</td><td>6 кг</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ХАРАКТЕРИСТИКИ: ШКАФ -->
+<div id="info-cabinet" class="modal" onclick="if(event.target===this)closeInfo('info-cabinet')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeInfo('info-cabinet')">&times;</span>
+        <h2>Шкаф «Рябинин»</h2>
+        <table class="specs-table">
+            <tr><td>Материал</td><td>Натуральная кожа</td></tr>
+            <tr><td>Размер</td><td>240 × 200 × 60 см</td></tr>
+            <tr><td>Руки</td><td>2 шт </td></tr>
+            <tr><td>Вес</td><td>90 кг</td></tr>
+            <tr><td>Гарантия</td><td>около 40 лет</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ШАПКА -->
+<header>
+    <div class="logo">🪑 РябининМастер</div>
+    <nav>
+        <a href="#">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+</header>
+
+<!-- БАННЕР -->
+<section class="hero">
+    <h1>Мебель ручной работы</h1>
+    <p>Столы, стулья и шкафы в стиле лофт</p>
+    <a href="#catalog" class="btn">Смотреть каталог</a>
+</section>
+
+<!-- КАТАЛОГ -->
+<section id="catalog">
+    <h2>Наши изделия</h2>
+    <div class="cards">
+
+        <!-- КАРТОЧКА 1: СТОЛ (категория: table) -->
+        <div class="card" data-category="table new">
+            <div class="card-img">
+                <img src="images/table.jpg" alt="Дубовый стол">
+            </div>
+            <div class="card-body">
+                <h3>Стол «Дубовый массив»</h3>
+                <p>Размер: 160×90×75 см. Материал: дуб. Покрытие: масло с воском.</p>
+                <p class="price">35 000 ₽</p>
+                <a href="#" class="btn btn-info" onclick="openInfo('info-table'); return false;">📋 Характеристики</a>
+                <a href="#" class="btn" onclick="openModal(); return false;">Заказать</a>
+            </div>
         </div>
 
-        <div class="review">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">«Рябини пришел идеально упакованный. Обивка ровная, цвет точь-в-точь как на фото.»</p>
-            <p class="review-author">— Ольга, Казань</p>
+        <!-- КАРТОЧКА 2: СТУЛ (категория: chair) -->
+        <div class="card" data-category="chair new">
+            <div class="card-img">
+                <img src="images/chair.jpg" alt="Стул из бука">
+            </div>
+            <div class="card-body">
+                <h3>Стул «Бук классик»</h3>
+                <p>Высота: 85 см. Материал: бук. Обивка: рогожка (серый).</p>
+                <p class="price">8 500 ₽</p>
+                <a href="#" class="btn btn-info" onclick="openInfo('info-chair'); return false;">📋 Характеристики</a>
+                <a href="#" class="btn" onclick="openModal(); return false;">Заказать</a>
+            </div>
         </div>
 
-        <div class="review">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">«Шкаф-Рябинин — это просто мечта. Весь подъезд теперь спрашивает где заказывала.»</p>
-            <p class="review-author">— Анастасия, Химки, ЖК "Солнечная система"</p>
+        <!-- КАРТОЧКА 3: ШКАФ (категория: cabinet) -->
+        <div class="card" data-category="cabinet">
+            <div class="card-img">
+                <img src="images/cabinet.jpg" alt="Шкаф-купе">
+            </div>
+            <div class="card-body">
+                <h3>Шкаф «Рябинин»</h3>
+                <p>Размер: 240×200×60 см. Материал: Натуральная кожа. Две руки.</p>
+                <p class="price">Бесплатно ₽</p>
+                <a href="#" class="btn btn-info" onclick="openInfo('info-cabinet'); return false;">📋 Характеристики</a>
+                <a href="#" class="btn" onclick="openModal(); return false;">Заказать</a>
+            </div>
+        </div>
+
+        <!-- КАРТОЧКА 4: ИНДИВИДУАЛЬНЫЙ ЗАКАЗ (категория: custom) -->
+        <div class="card card-custom" data-category="custom">
+            <div class="card-img">
+                <img src="images/individual.jpg" alt="Индивидуальный заказ">
+            </div>
+            <div class="card-body">
+                <h3>Индивидуальный заказ</h3>
+                <p>Сделаем мебель по вашим размерам и эскизам. Любой материал, цвет и форма.</p>
+                <ul class="custom-features">
+                    <li>📐 Ваши размеры</li>
+                    <li>🎨 Ваш дизайн</li>
+                    <li>🪵 Любой материал</li>
+                </ul>
+                <p class="price">Договорная стоимость</p>
+                <a href="#" class="btn" onclick="openModal(); return false;">Обсудить заказ</a>
+            </div>
         </div>
 
     </div>
 </section>
-    <!-- КОНТАКТЫ -->
-    <section id="contacts">
-        <h2>Контакты</h2>
-        <p>📞 Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
-        <p>📧 Email: <a href="mailto:info@vashmaster.ru">info@vashmaster.ru</a></p>
-        <p>📍 Адрес: г. Химки</p>
-        <br>
-        <p><em>Звоните или пишите — обсудим ваш заказ!</em></p>
-    </section>
 
-    <!-- ПОДВАЛ -->
-    <footer>
-        <p>© 2026 ВашМастер. Все права защищены.</p>
-    </footer>
+<!-- КОНТАКТЫ -->
+<section id="contacts">
+    <h2>Контакты</h2>
+    <p>📞 Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+    <p>📧 Email: <a href="mailto:info@vashmaster.ru">info@vashmaster.ru</a></p>
+    <p>📍 Адрес: г.Химки</p>
+    <br>
+    <p><em>Звоните или пишите — обсудим ваш заказ!</em></p>
+</section>
+
+<!-- ПОДВАЛ -->
+<footer>
+    <p>© 2026 РябининМастер. Все права защищены.</p>
+</footer>
+
+<!-- СКРИПТЫ -->
+<script>
+// Модальные окна
+function openModal() {
+    document.getElementById('order-modal').classList.add('show');
+}
+function closeModal() {
+    document.getElementById('order-modal').classList.remove('show');
+}
+function openInfo(id) {
+    document.getElementById(id).classList.add('show');
+}
+function closeInfo(id) {
+    document.getElementById(id).classList.remove('show');
+}
+
+// Боковая панель
+function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('overlay').classList.add('show');
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+}
+
+// Фильтрация карточек
+function filterCards(category) {
+    // Подсветка активной ссылки
+    document.querySelectorAll('.sidebar-link').forEach(function(link) {
+        link.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    // Показ/скрытие карточек
+    var cards = document.querySelectorAll('.card');
+    cards.forEach(function(card) {
+        if (category === 'all' || category === 'new') {
+            // Показать все или только с тегом new
+            if (category === 'all') {
+                card.style.display = '';
+            } else {
+                var cats = card.getAttribute('data-category');
+                if (cats && cats.indexOf('new') !== -1) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        } else {
+            // Показать только выбранную категорию
+            var cats = card.getAttribute('data-category');
+            if (cats && cats.indexOf(category) !== -1) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
+</script>
 
 </body>
 </html>

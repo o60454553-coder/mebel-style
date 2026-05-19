@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://o60454553-coder.github.io/mebel-site/sitemap.xml

@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мебель на заказ — РябининМастер</title>
+    
+    <!-- SEO -->
+    <title>Мебель ручной работы на заказ | РябининМастер</title>
+    <meta name="description" content="РябининМастер — изготовление мебели на заказ. Столы, стулья, шкафы, индивидуальные проекты. Доставка.">
+    
+    <!-- Open Graph (превью для VK, Telegram, WhatsApp) -->
+    <meta property="og:title" content="РябининМастер — мебель на заказ">
+    <meta property="og:description" content="Столы, стулья и шкафы из натурального дерева. Индивидуальные заказы.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://твой-username.github.io/mebel-site/">
+    <meta property="og:image" content="https://твой-username.github.io/mebel-site/images/table.jpg">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -94,7 +105,7 @@
         <table class="specs-table">
             <tr><td>Материал</td><td>Натуральная кожа</td></tr>
             <tr><td>Размер</td><td>240 × 200 × 60 см</td></tr>
-            <tr><td>Руки</td><td>2 шт </td></tr>
+            <tr><td>Руки</td><td>2 шт</td></tr>
             <tr><td>Вес</td><td>90 кг</td></tr>
             <tr><td>Гарантия</td><td>около 40 лет</td></tr>
         </table>
@@ -113,8 +124,8 @@
 
 <!-- БАННЕР -->
 <section class="hero">
-    <h1>Мебель ручной работы</h1>
-    <p>Столы, стулья и шкафы в стиле лофт</p>
+    <h1>РябининМастер — мебель ручной работы</h1>
+    <p>Столы, стулья и шкафы в стиле лофт. Индивидуальные проекты.</p>
     <a href="#catalog" class="btn">Смотреть каталог</a>
 </section>
 
@@ -123,10 +134,10 @@
     <h2>Наши изделия</h2>
     <div class="cards">
 
-        <!-- КАРТОЧКА 1: СТОЛ (категория: table) -->
+        <!-- КАРТОЧКА 1: СТОЛ -->
         <div class="card" data-category="table new">
             <div class="card-img">
-                <img src="images/table.jpg" alt="Дубовый стол">
+                <img src="images/table.jpg" alt="Дубовый стол РябининМастер">
             </div>
             <div class="card-body">
                 <h3>Стол «Дубовый массив»</h3>
@@ -137,10 +148,10 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА 2: СТУЛ (категория: chair) -->
+        <!-- КАРТОЧКА 2: СТУЛ -->
         <div class="card" data-category="chair new">
             <div class="card-img">
-                <img src="images/chair.jpg" alt="Стул из бука">
+                <img src="images/chair.jpg" alt="Стул бук классик РябининМастер">
             </div>
             <div class="card-body">
                 <h3>Стул «Бук классик»</h3>
@@ -151,10 +162,10 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА 3: ШКАФ (категория: cabinet) -->
+        <!-- КАРТОЧКА 3: ШКАФ -->
         <div class="card" data-category="cabinet">
             <div class="card-img">
-                <img src="images/cabinet.jpg" alt="Шкаф-купе">
+                <img src="images/cabinet.jpg" alt="Шкаф Рябинин в стиле лофт">
             </div>
             <div class="card-body">
                 <h3>Шкаф «Рябинин»</h3>
@@ -165,10 +176,10 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА 4: ИНДИВИДУАЛЬНЫЙ ЗАКАЗ (категория: custom) -->
+        <!-- КАРТОЧКА 4: ИНДИВИДУАЛЬНЫЙ ЗАКАЗ -->
         <div class="card card-custom" data-category="custom">
             <div class="card-img">
-                <img src="images/individual.jpg" alt="Индивидуальный заказ">
+                <img src="images/individual.jpg" alt="Индивидуальный заказ мебели РябининМастер">
             </div>
             <div class="card-body">
                 <h3>Индивидуальный заказ</h3>
@@ -188,22 +199,21 @@
 
 <!-- КОНТАКТЫ -->
 <section id="contacts">
-    <h2>Контакты</h2>
+    <h2>Контакты РябининМастер</h2>
     <p>📞 Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
     <p>📧 Email: <a href="mailto:info@vashmaster.ru">info@vashmaster.ru</a></p>
-    <p>📍 Адрес: г.Химки</p>
+    <p>📍 Адрес: г. Химки</p>
     <br>
     <p><em>Звоните или пишите — обсудим ваш заказ!</em></p>
 </section>
 
 <!-- ПОДВАЛ -->
 <footer>
-    <p>© 2026 РябининМастер. Все права защищены.</p>
+    <p>© 2026 РябининМастер. Мебель на заказ. Все права защищены.</p>
 </footer>
 
 <!-- СКРИПТЫ -->
 <script>
-// Модальные окна
 function openModal() {
     document.getElementById('order-modal').classList.add('show');
 }
@@ -217,7 +227,6 @@ function closeInfo(id) {
     document.getElementById(id).classList.remove('show');
 }
 
-// Боковая панель
 function openSidebar() {
     document.getElementById('sidebar').classList.add('open');
     document.getElementById('overlay').classList.add('show');
@@ -227,37 +236,22 @@ function closeSidebar() {
     document.getElementById('overlay').classList.remove('show');
 }
 
-// Фильтрация карточек
 function filterCards(category) {
-    // Подсветка активной ссылки
     document.querySelectorAll('.sidebar-link').forEach(function(link) {
         link.classList.remove('active');
     });
     event.target.classList.add('active');
 
-    // Показ/скрытие карточек
     var cards = document.querySelectorAll('.card');
     cards.forEach(function(card) {
-        if (category === 'all' || category === 'new') {
-            // Показать все или только с тегом new
-            if (category === 'all') {
-                card.style.display = '';
-            } else {
-                var cats = card.getAttribute('data-category');
-                if (cats && cats.indexOf('new') !== -1) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-        } else {
-            // Показать только выбранную категорию
+        if (category === 'all') {
+            card.style.display = '';
+        } else if (category === 'new') {
             var cats = card.getAttribute('data-category');
-            if (cats && cats.indexOf(category) !== -1) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = (cats && cats.indexOf('new') !== -1) ? '' : 'none';
+        } else {
+            var cats = card.getAttribute('data-category');
+            card.style.display = (cats && cats.indexOf(category) !== -1) ? '' : 'none';
         }
     });
 }
